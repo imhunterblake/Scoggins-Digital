@@ -457,11 +457,20 @@
             with a free consultation and quote. No commitment required.
           </p>
           <div class="contact-methods">
-            <a href="mailto:hunter@scoggins.digital" class="contact-method">
+            <a
+              href="/cdn-cgi/l/email-protection#751d001b0110073506161a12121c1b065b111c121c011419"
+              class="contact-method"
+            >
               <div class="method-icon">✉️</div>
               <div>
                 <div class="method-label">Email</div>
-                <div class="method-value">hunter@scoggins.digital</div>
+                <div class="method-value">
+                  <span
+                    class="__cf_email__"
+                    data-cfemail="d0b8a5bea4b5a290a3b3bfb7b7b9bea3feb4b9b7b9a4b1bc"
+                    >[email&#160;protected]</span
+                  >
+                </div>
               </div>
             </a>
             <a href="#" class="contact-method">
@@ -480,28 +489,47 @@
             </a>
           </div>
         </div>
-        <div class="contact-form reveal">
+        <form class="contact-form reveal" id="contact-form" autocomplete="off">
           <div class="form-row">
             <div class="form-group">
               <label>First Name</label>
-              <input type="text" placeholder="John" />
+              <input
+                type="text"
+                name="first_name"
+                placeholder="John"
+                required
+              />
             </div>
             <div class="form-group">
               <label>Last Name</label>
-              <input type="text" placeholder="Smith" />
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Smith"
+                required
+              />
             </div>
           </div>
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="john@yourbusiness.com" />
+            <input
+              type="email"
+              name="email"
+              placeholder="john@yourbusiness.com"
+              required
+            />
           </div>
           <div class="form-group">
             <label>Business Name (if applicable)</label>
-            <input type="text" placeholder="Smith's Hardware" />
+            <input
+              type="text"
+              name="business_name"
+              placeholder="Smith's Hardware"
+            />
           </div>
           <div class="form-group">
             <label>Project Type</label>
-            <select>
+            <select name="project_type">
               <option value="" disabled selected>Select a service...</option>
               <option>Landing Page ($400–$800)</option>
               <option>Small Business Website ($800–$1,500)</option>
@@ -515,11 +543,13 @@
           <div class="form-group">
             <label>Tell me about your project</label>
             <textarea
+              name="message"
               placeholder="What does your business do? What are you hoping a new website will accomplish for you?"
+              required
             ></textarea>
           </div>
-          <button type="button" class="form-submit">Send Message →</button>
-        </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
       </div>
     </section>
 
@@ -542,7 +572,7 @@
             >💼 LinkedIn</a
           >
           <a
-            href="https://github.com/imhunterblake"
+            href="http://github.com/imhunterblake/"
             target="_blank"
             class="social-link"
             >🐱 GitHub</a
