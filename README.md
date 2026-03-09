@@ -16,13 +16,13 @@ Built entirely from scratch — no page builders, no templates. Clean, custom co
 
 ## Tech Stack
 
-| Layer      | Technology                              |
-| ---------- | --------------------------------------- |
-| Markup     | HTML5 (semantic)                        |
+| Layer      | Technology              |
+|------------|-------------------------|
+| Markup     | HTML5 (semantic)        |
 | Styling    | CSS3 (custom properties, grid, flexbox) |
-| Scripts    | Vanilla JavaScript (ES6+)               |
-| Fonts      | Google Fonts — Syne, DM Sans            |
-| Dev Server | VS Code Live Server                     |
+| Scripts    | Vanilla JavaScript (ES6+) |
+| Fonts      | Google Fonts — Syne, DM Sans |
+| Dev Server | VS Code Live Server     |
 
 ---
 
@@ -45,8 +45,11 @@ scoggins-digital/
 ├── index.html        # All markup and page structure
 ├── styles.css        # All styles, organized by section
 ├── script.js         # Scroll reveal, nav highlight, form feedback
-└── screenshots/      # Screenshots for documentation
-    └── Scoggins-Digital.png
+└── screenshots/      # Portfolio thumbnails and documentation
+    ├── Scoggins-Digital.png
+    ├── portfolio-2026-02-2.png   # Developer Portfolio thumbnail
+    ├── BC-sweets.png             # BC's Sweets & Treats thumbnail
+    └── dashboard.png             # Personal Financial Tracker thumbnail
 ```
 
 ---
@@ -56,7 +59,10 @@ scoggins-digital/
 - **Hero** — headline, available badge, CTA buttons, stats
 - **About** — profile card, skill tags, background highlights
 - **Services** — 6 service cards with pricing
-- **Portfolio** — project showcase grid
+- **Portfolio** — 3 live projects with screenshots and links:
+  - [Developer Portfolio](https://hunter-scoggins-portfolio.vercel.app/)
+  - [BC's Sweets & Treats](https://bc-sweets.vercel.app/)
+  - [Personal Financial Tracker](https://personal-financial-tracker-frontend-production.up.railway.app/)
 - **Testimonials** — client feedback cards
 - **Contact** — contact methods + inquiry form
 - **Social** — TikTok / LinkedIn / GitHub links
@@ -69,7 +75,7 @@ No build tools or dependencies required. Just open with a live server:
 
 1. Clone the repo
    ```bash
-   git clone https://github.com/yourusername/scoggins-digital.git
+   git clone https://github.com/imhunterblake/scoggins-digital.git
    ```
 2. Open the folder in VS Code
 3. Right-click `index.html` → **Open with Live Server**
@@ -91,10 +97,9 @@ This site is designed to be deployed on any static hosting platform:
 ## Contact
 
 **Hunter Scoggins**
-
 - Email: hunter@scoggins.digital
 - TikTok: [@ScogginsDigital](https://tiktok.com/@ScogginsDigital)
-- LinkedIn: [linkedin.com/in/hunterscoggins](https://linkedin.com/in/hunter-scoggins)
+- LinkedIn: [linkedin.com/in/hunterscoggins](https://linkedin.com/in/hunterscoggins)
 
 ---
 
