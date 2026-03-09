@@ -94,7 +94,7 @@ This site is designed to be deployed on any static hosting platform:
 
 - Email: hunter@scoggins.digital
 - TikTok: [@ScogginsDigital](https://tiktok.com/@ScogginsDigital)
-- LinkedIn: [linkedin.com/in/hunterscoggins](https://linkedin.com/in/hunterscoggins)
+- LinkedIn: [linkedin.com/in/hunterscoggins](https://linkedin.com/in/hunter-scoggins)
 
 ---
 
