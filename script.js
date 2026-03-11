@@ -7,106 +7,126 @@
    .visible when they enter the viewport, triggering the
    CSS fade-in-up transition defined in styles.css
    ──────────────────────────────────────────────────────── */
-const revealElements = document.querySelectorAll(".reveal");
+const revealElements = document.querySelectorAll('.reveal');
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Stagger each card slightly for a cascading reveal effect
-        setTimeout(() => {
-          entry.target.classList.add("visible");
-        }, index * 80);
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      // Stagger each card slightly for a cascading reveal effect
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 80);
 
-        // Stop observing once revealed — no need to re-trigger
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.05,
-    rootMargin: "0px 0px 0px 0px",
-  },
-);
+      // Stop observing once revealed — no need to re-trigger
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.05,
+  rootMargin: '0px 0px 0px 0px'
+});
 
-revealElements.forEach((el) => revealObserver.observe(el));
+revealElements.forEach(el => revealObserver.observe(el));
 
 // Also reveal any elements already in the viewport on page load
 // (handles direct anchor links like #contact, #portfolio, etc.)
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   revealElements.forEach((el, i) => {
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight) {
-      setTimeout(() => el.classList.add("visible"), i * 80);
+      setTimeout(() => el.classList.add('visible'), i * 80);
     }
   });
 });
+
 
 /* ── ACTIVE NAV LINK HIGHLIGHT ──
    Highlights the correct nav link based on which section
    is currently scrolled into view
    ──────────────────────────────────────────────────────── */
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
 
-window.addEventListener("scroll", () => {
-  let currentSection = "";
+window.addEventListener('scroll', () => {
+  let currentSection = '';
 
-  sections.forEach((section) => {
+  sections.forEach(section => {
     if (window.scrollY >= section.offsetTop - 100) {
-      currentSection = section.getAttribute("id");
+      currentSection = section.getAttribute('id');
     }
   });
 
-  navLinks.forEach((link) => {
-    const isActive = link.getAttribute("href") === `#${currentSection}`;
-    link.style.color = isActive ? "var(--accent)" : "";
+  navLinks.forEach(link => {
+    const isActive = link.getAttribute('href') === `#${currentSection}`;
+    link.style.color = isActive ? 'var(--accent)' : '';
   });
 });
+
 
 /* ── CONTACT FORM SUBMIT ──
    Submits to Formspree via fetch() — no page reload, no
    Chrome "resubmit form?" dialog on refresh.
    ──────────────────────────────────────────────────────── */
-const contactForm = document.getElementById("contact-form");
+const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
-  contactForm.addEventListener("submit", async (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const submitButton = contactForm.querySelector(".form-submit");
+    const submitButton = contactForm.querySelector('.form-submit');
     const formData = new FormData(contactForm);
 
-    submitButton.textContent = "Sending…";
+    submitButton.textContent = 'Sending…';
     submitButton.disabled = true;
 
     try {
-      const response = await fetch("https://formspree.io/f/xlgpgapz", {
-        method: "POST",
+      const response = await fetch('https://formspree.io/f/xlgpgapz', {
+        method: 'POST',
         body: formData,
-        headers: { Accept: "application/json" },
+        headers: { 'Accept': 'application/json' }
       });
 
       if (response.ok) {
-        submitButton.textContent = "✓ Message Sent!";
-        submitButton.style.background = "var(--green)";
+        submitButton.textContent = '✓ Message Sent!';
+        submitButton.style.background = 'var(--green)';
         contactForm.reset();
         setTimeout(() => {
-          submitButton.textContent = "Send Message →";
-          submitButton.style.background = "";
+          submitButton.textContent = 'Send Message →';
+          submitButton.style.background = '';
           submitButton.disabled = false;
         }, 3000);
       } else {
-        throw new Error("Server error");
+        throw new Error('Server error');
       }
     } catch (err) {
-      submitButton.textContent = "Something went wrong — try email";
-      submitButton.style.background = "#c0392b";
+      submitButton.textContent = 'Something went wrong — try email';
+      submitButton.style.background = '#c0392b';
       setTimeout(() => {
-        submitButton.textContent = "Send Message →";
-        submitButton.style.background = "";
+        submitButton.textContent = 'Send Message →';
+        submitButton.style.background = '';
         submitButton.disabled = false;
       }, 4000);
     }
+  });
+}
+
+/* ── MOBILE HAMBURGER MENU ──
+   Toggles the nav open/closed on mobile
+   ──────────────────────────────────────────────────────── */
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu when a nav link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
   });
 }
