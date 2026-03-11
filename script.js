@@ -110,3 +110,24 @@ if (contactForm) {
     }
   });
 }
+
+/* ── MOBILE HAMBURGER MENU ──
+   Toggles the nav open/closed on mobile
+   ──────────────────────────────────────────────────────── */
+const hamburger = document.getElementById("nav-hamburger");
+const mobileNav = document.getElementById("nav-links");
+
+if (hamburger && mobileNav) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mobileNav.classList.toggle("open");
+  });
+
+  // Close menu when a nav link is clicked
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      mobileNav.classList.remove("open");
+    });
+  });
+}
