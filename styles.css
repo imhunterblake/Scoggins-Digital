@@ -1581,3 +1581,437 @@ footer {
     padding: 0.85rem 1rem !important;
   }
 }
+/* ============================================================
+   SCOGGINS DIGITAL — additions to styles.css
+   Paste these at the bottom of your styles.css file
+   ============================================================ */
+
+/* ── CLIENT LOGIN NAV LINK ── */
+.nav-client-login {
+  background: transparent !important;
+  color: var(--text2) !important;
+  border: 1px solid var(--border) !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 6px !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.2s !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+
+.nav-client-login::before {
+  content: "⬡";
+  font-size: 0.65rem;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.nav-client-login:hover {
+  color: var(--accent) !important;
+  border-color: rgba(0, 212, 255, 0.35) !important;
+  background: rgba(0, 212, 255, 0.05) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.1) !important;
+}
+
+/* On mobile — style like the other nav links */
+@media (max-width: 768px) {
+  .nav-client-login {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-size: 1rem !important;
+    color: var(--text2) !important;
+    display: block !important;
+  }
+
+  .nav-client-login::before {
+    display: none;
+  }
+}
+
+/* ============================================================
+   HOW IT WORKS / PROCESS SECTION
+   ============================================================ */
+#process {
+  background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid texture */
+#process::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 20%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.process-header .section-sub {
+  margin: 0 auto;
+}
+
+/* ── STEPS CONTAINER ── */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── INDIVIDUAL STEP ── */
+.process-step {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 0 2.5rem;
+  align-items: start;
+  position: relative;
+  padding-bottom: 3.5rem;
+}
+
+.process-step:last-of-type {
+  padding-bottom: 0;
+}
+
+/* Vertical connector line */
+.step-connector {
+  position: absolute;
+  left: 39px;
+  top: 80px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 212, 255, 0.3),
+    rgba(0, 212, 255, 0.05)
+  );
+}
+
+.process-step:last-of-type .step-connector {
+  display: none;
+}
+
+/* Step number */
+.step-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  opacity: 0.5;
+  padding-top: 1.75rem;
+  text-align: center;
+}
+
+/* Step content box */
+.step-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.step-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.15),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.process-step:hover .step-content {
+  border-color: rgba(0, 212, 255, 0.2);
+  transform: translateX(4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    -4px 0 0 var(--accent);
+}
+
+.process-step:hover .step-content::before {
+  opacity: 1;
+}
+
+/* Icon wrap */
+.step-icon-wrap {
+  flex-shrink: 0;
+}
+
+.step-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--accent-glow2);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+}
+
+.process-step:hover .step-icon {
+  background: var(--accent-glow);
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
+  transform: scale(1.05);
+}
+
+/* Step body text */
+.step-body {
+  flex: 1;
+}
+
+.step-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.02em;
+}
+
+.step-body p {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+/* Bullet list inside each step */
+.step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.step-list li {
+  font-size: 0.82rem;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 400;
+}
+
+.step-list li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* Timeline badge (Day 1, Days 2–14, Launch Day) */
+.step-badge {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow2);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 100px;
+  padding: 0.35rem 0.85rem;
+  white-space: nowrap;
+  margin-top: 1.75rem;
+  height: fit-content;
+  transition: all 0.3s;
+}
+
+.process-step:hover .step-badge {
+  background: var(--accent-glow);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+/* ── BOTTOM CTA STRIP ── */
+.process-cta {
+  margin-top: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.process-cta-inner {
+  background: var(--surface);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 24px;
+  padding: 3rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-cta-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    var(--green),
+    transparent
+  );
+}
+
+.process-cta-glow {
+  position: absolute;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.process-cta-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.process-cta-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.process-cta-text p {
+  font-size: 0.9rem;
+  color: var(--text2);
+  font-weight: 300;
+}
+
+/* ── MOBILE: HOW IT WORKS ── */
+@media (max-width: 768px) {
+  .process-header {
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  .process-header .section-sub {
+    margin: 0;
+  }
+
+  .process-steps {
+    max-width: 100%;
+  }
+
+  .process-step {
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .step-connector {
+    left: 21px;
+    top: 70px;
+  }
+
+  .step-number {
+    font-size: 0.65rem;
+    padding-top: 1.5rem;
+  }
+
+  .step-content {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    grid-column: 2;
+  }
+
+  .process-step:hover .step-content {
+    transform: none;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.2),
+      -3px 0 0 var(--accent);
+  }
+
+  .step-badge {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0.5rem;
+    align-self: start;
+    width: fit-content;
+  }
+
+  .step-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .process-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+    padding: 2rem;
+  }
+
+  .process-cta-inner .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .process-cta-text h3 {
+    font-size: 1.25rem;
+  }
+}
