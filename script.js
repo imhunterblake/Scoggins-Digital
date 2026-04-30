@@ -131,3 +131,114 @@ if (hamburger && mobileNav) {
     });
   });
 }
+
+/* ── PORTFOLIO CAROUSEL ──
+   Add this to the bottom of script.js
+   ──────────────────────────────────────────────────────── */
+(function () {
+  const stage = document.getElementById("carousel-stage");
+  const slides = stage ? stage.querySelectorAll(".carousel-slide") : [];
+  const prevBtn = document.getElementById("carousel-prev");
+  const nextBtn = document.getElementById("carousel-next");
+  const dots = document.querySelectorAll(".carousel-dot");
+  const thumbs = document.querySelectorAll(".carousel-thumb");
+
+  if (!stage || slides.length === 0) return;
+
+  let current = 0;
+  const total = slides.length;
+
+  function goTo(index) {
+    // Wrap around
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+
+    // Move stage
+    stage.style.transform = `translateX(-${index * 100}%)`;
+
+    // Active slide opacity
+    slides.forEach((s, i) => {
+      s.classList.toggle("active", i === index);
+    });
+
+    // Dots
+    dots.forEach((d, i) => {
+      d.classList.toggle("active", i === index);
+    });
+
+    // Thumbs
+    thumbs.forEach((t, i) => {
+      t.classList.toggle("active", i === index);
+    });
+
+    current = index;
+  }
+
+  // Init — activate first slide
+  goTo(0);
+
+  // Arrow buttons
+  prevBtn?.addEventListener("click", () => goTo(current - 1));
+  nextBtn?.addEventListener("click", () => goTo(current + 1));
+
+  // Dot clicks
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      goTo(parseInt(dot.dataset.slide));
+    });
+  });
+
+  // Thumb clicks
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      goTo(parseInt(thumb.dataset.slide));
+    });
+  });
+
+  // Keyboard navigation when carousel is in view
+  document.addEventListener("keydown", (e) => {
+    const section = document.getElementById("portfolio");
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!inView) return;
+    if (e.key === "ArrowLeft") goTo(current - 1);
+    if (e.key === "ArrowRight") goTo(current + 1);
+  });
+
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  stage.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true },
+  );
+
+  stage.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0)
+          goTo(current + 1); // swipe left = next
+        else goTo(current - 1); // swipe right = prev
+      }
+    },
+    { passive: true },
+  );
+
+  // Auto-advance every 6 seconds (pauses on hover)
+  let autoTimer = setInterval(() => goTo(current + 1), 6000);
+
+  const carouselWrap = document.querySelector(".carousel-wrap");
+  carouselWrap?.addEventListener("mouseenter", () => clearInterval(autoTimer));
+  carouselWrap?.addEventListener("mouseleave", () => {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 6000);
+  });
+})();

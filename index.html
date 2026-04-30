@@ -374,6 +374,7 @@
     </section>
 
     <!-- ── PORTFOLIO ── -->
+    <!-- ── PORTFOLIO ── -->
     <section id="portfolio">
       <div class="portfolio-header reveal">
         <div>
@@ -381,7 +382,7 @@
           <h2 class="section-title">Recent Projects</h2>
           <p class="section-sub">
             Every project is built from scratch — no page builders, no
-            templates. Just clean, custom code.
+            templates. Just clean, custom code built to convert.
           </p>
         </div>
         <a
@@ -391,112 +392,271 @@
           >View GitHub →</a
         >
       </div>
-      <div class="portfolio-grid">
-        <!-- 1. Developer Portfolio — featured top card -->
-        <div class="portfolio-card featured reveal">
-          <div class="portfolio-preview">
-            <div class="preview-bg preview-bg-2">
+
+      <!-- ── CAROUSEL ── -->
+      <div class="carousel-wrap reveal">
+        <!-- Main stage -->
+        <div class="carousel-stage" id="carousel-stage">
+          <!-- SLIDE 1: The Ember Room -->
+          <div class="carousel-slide" data-index="0">
+            <div class="carousel-img">
               <img
-                src="screenshots/portfolio-2026-02-2.png"
-                alt="Developer Portfolio screenshot"
+                src="screenshots/rest-demo.png"
+                alt="The Ember Room restaurant website"
               />
-              <div class="preview-overlay">
+              <div class="carousel-img-overlay">
                 <a
-                  href="https://hunter-scoggins-portfolio.vercel.app/"
+                  href="https://restaurant-demo-phi-pearl.vercel.app/"
                   target="_blank"
-                  class="preview-link"
-                  >View Live Site</a
+                  class="carousel-live-btn"
+                  >View Live Site ↗</a
+                >
+              </div>
+              <div class="carousel-type-badge">Restaurant Demo</div>
+            </div>
+            <div class="carousel-info">
+              <div class="carousel-number">01 / 04</div>
+              <h3 class="carousel-title">The Ember Room</h3>
+              <p class="carousel-desc">
+                A cinematic fine-dining concept for an Oxford, MS restaurant.
+                Features wood-fired Southern cuisine branding, animated ember
+                particles, a custom cursor, reservation form, and full menu
+                layout — built to show local restaurant owners exactly what
+                their site could feel like.
+              </p>
+              <div class="carousel-tags">
+                <span class="carousel-tag">HTML</span>
+                <span class="carousel-tag">CSS</span>
+                <span class="carousel-tag">JavaScript</span>
+                <span class="carousel-tag">Restaurant</span>
+                <span class="carousel-tag">Animations</span>
+              </div>
+              <div class="carousel-actions">
+                <a
+                  href="https://restaurant-demo-phi-pearl.vercel.app/"
+                  target="_blank"
+                  class="btn-primary"
+                  >View Live Site →</a
                 >
               </div>
             </div>
           </div>
-          <div class="portfolio-info">
-            <h3>Developer Portfolio</h3>
-            <p>
-              Personal portfolio showcasing projects and skills. Dark-themed,
-              fully responsive, and built with clean semantic HTML, CSS, and
-              JavaScript.
-            </p>
-            <div class="portfolio-tags">
-              <span class="portfolio-tag">HTML</span>
-              <span class="portfolio-tag">CSS</span>
-              <span class="portfolio-tag">JavaScript</span>
-              <span class="portfolio-tag">Responsive</span>
+
+          <!-- SLIDE 2: Magnolia & Co -->
+          <div class="carousel-slide" data-index="1">
+            <div class="carousel-img">
+              <img
+                src="screenshots/boutique-demo.png"
+                alt="Magnolia and Co boutique website"
+              />
+              <div class="carousel-img-overlay">
+                <a
+                  href="https://boutique-demo-three.vercel.app/"
+                  target="_blank"
+                  class="carousel-live-btn"
+                  >View Live Site ↗</a
+                >
+              </div>
+              <div class="carousel-type-badge">Boutique Demo</div>
+            </div>
+            <div class="carousel-info">
+              <div class="carousel-number">02 / 04</div>
+              <h3 class="carousel-title">Magnolia & Co.</h3>
+              <p class="carousel-desc">
+                An editorial women's boutique concept for a women's clothing
+                boutique on Oxford's Courthouse Square. Features a luxury
+                fashion aesthetic with scrolling marquee, editorial split hero,
+                collection grid with hover reveals, and a personal styling
+                services section.
+              </p>
+              <div class="carousel-tags">
+                <span class="carousel-tag">HTML</span>
+                <span class="carousel-tag">CSS</span>
+                <span class="carousel-tag">JavaScript</span>
+                <span class="carousel-tag">Retail</span>
+                <span class="carousel-tag">Editorial</span>
+              </div>
+              <div class="carousel-actions">
+                <a
+                  href="https://boutique-demo-three.vercel.app/"
+                  target="_blank"
+                  class="btn-primary"
+                  >View Live Site →</a
+                >
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- 2. BC's Sweets & Treats -->
-        <div class="portfolio-card reveal">
-          <div class="portfolio-preview">
-            <div class="preview-bg preview-bg-1">
+          <!-- SLIDE 3: BC's Sweets -->
+          <div class="carousel-slide" data-index="2">
+            <div class="carousel-img">
               <img
                 src="screenshots/BC-sweets.png"
-                alt="BC's Sweets and Treats website screenshot"
+                alt="BC's Sweets and Treats website"
               />
-              <div class="preview-overlay">
+              <div class="carousel-img-overlay">
                 <a
                   href="https://bc-sweets.vercel.app/"
                   target="_blank"
-                  class="preview-link"
-                  >View Live Site</a
+                  class="carousel-live-btn"
+                  >View Live Site ↗</a
+                >
+              </div>
+              <div class="carousel-type-badge">Client Project</div>
+            </div>
+            <div class="carousel-info">
+              <div class="carousel-number">03 / 04</div>
+              <h3 class="carousel-title">BC's Sweets & Treats</h3>
+              <p class="carousel-desc">
+                A real client project for a local Oxford, MS bakery. Modern
+                redesign featuring a mobile-first layout, full menu display,
+                photo gallery, and contact section. Built from scratch with
+                clean HTML, CSS, and JavaScript — delivered on time and on
+                budget.
+              </p>
+              <div class="carousel-tags">
+                <span class="carousel-tag">HTML</span>
+                <span class="carousel-tag">CSS</span>
+                <span class="carousel-tag">JavaScript</span>
+                <span class="carousel-tag">Mobile-First</span>
+                <span class="carousel-tag">Client Work</span>
+              </div>
+              <div class="carousel-actions">
+                <a
+                  href="https://bc-sweets.vercel.app/"
+                  target="_blank"
+                  class="btn-primary"
+                  >View Live Site →</a
                 >
               </div>
             </div>
           </div>
-          <div class="portfolio-info">
-            <h3>BC's Sweets & Treats</h3>
-            <p>
-              A modern bakery website redesign for a local Oxford, MS business.
-              Mobile-first, full menu, gallery, and contact section. Built with
-              clean HTML, CSS, and JavaScript.
-            </p>
-            <div class="portfolio-tags">
-              <span class="portfolio-tag">HTML</span>
-              <span class="portfolio-tag">CSS</span>
-              <span class="portfolio-tag">JavaScript</span>
-              <span class="portfolio-tag">Mobile-First</span>
+
+          <!-- SLIDE 4: Developer Portfolio -->
+          <div class="carousel-slide" data-index="3">
+            <div class="carousel-img">
+              <img
+                src="screenshots/portfolio-2026-02-2.png"
+                alt="Developer Portfolio website"
+              />
+              <div class="carousel-img-overlay">
+                <a
+                  href="https://hunter-scoggins-portfolio.vercel.app/"
+                  target="_blank"
+                  class="carousel-live-btn"
+                  >View Live Site ↗</a
+                >
+              </div>
+              <div class="carousel-type-badge">Personal Project</div>
+            </div>
+            <div class="carousel-info">
+              <div class="carousel-number">04 / 04</div>
+              <h3 class="carousel-title">Developer Portfolio</h3>
+              <p class="carousel-desc">
+                Personal developer portfolio showcasing projects, skills, and
+                work history. Dark-themed, fully responsive, and built with
+                clean semantic HTML, CSS, and JavaScript — designed to make a
+                strong first impression with recruiters and clients alike.
+              </p>
+              <div class="carousel-tags">
+                <span class="carousel-tag">HTML</span>
+                <span class="carousel-tag">CSS</span>
+                <span class="carousel-tag">JavaScript</span>
+                <span class="carousel-tag">Responsive</span>
+                <span class="carousel-tag">Dark Theme</span>
+              </div>
+              <div class="carousel-actions">
+                <a
+                  href="https://hunter-scoggins-portfolio.vercel.app/"
+                  target="_blank"
+                  class="btn-primary"
+                  >View Live Site →</a
+                >
+              </div>
             </div>
           </div>
+        </div>
+        <!-- /carousel-stage -->
+
+        <!-- Navigation -->
+        <div class="carousel-nav">
+          <button
+            class="carousel-arrow carousel-prev"
+            id="carousel-prev"
+            aria-label="Previous project"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M12.5 15L7.5 10L12.5 5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <div class="carousel-dots" id="carousel-dots">
+            <button
+              class="carousel-dot active"
+              data-slide="0"
+              aria-label="Project 1"
+            ></button>
+            <button
+              class="carousel-dot"
+              data-slide="1"
+              aria-label="Project 2"
+            ></button>
+            <button
+              class="carousel-dot"
+              data-slide="2"
+              aria-label="Project 3"
+            ></button>
+            <button
+              class="carousel-dot"
+              data-slide="3"
+              aria-label="Project 4"
+            ></button>
+          </div>
+
+          <button
+            class="carousel-arrow carousel-next"
+            id="carousel-next"
+            aria-label="Next project"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M7.5 5L12.5 10L7.5 15"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
         </div>
 
-        <!-- 3. Personal Financial Tracker -->
-        <div class="portfolio-card reveal">
-          <div class="portfolio-preview">
-            <div class="preview-bg preview-bg-3">
-              <img
-                src="screenshots/dashboard.png"
-                alt="Personal Financial Tracker screenshot"
-              />
-              <div class="preview-overlay">
-                <a
-                  href="https://personal-financial-tracker-frontend-production.up.railway.app/"
-                  target="_blank"
-                  class="preview-link"
-                  >View Live Site</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-info">
-            <h3>Personal Financial Tracker</h3>
-            <p>
-              A full-stack web application for tracking income, expenses, and
-              financial goals. Built with React, Go backend, Tailwind CSS, and
-              Chart.js data visualizations. Features full CRUD operations,
-              interactive charts, and a clean dashboard UI.
-            </p>
-            <div class="portfolio-tags">
-              <span class="portfolio-tag">React</span>
-              <span class="portfolio-tag">Go</span>
-              <span class="portfolio-tag">Tailwind CSS</span>
-              <span class="portfolio-tag">Chart.js</span>
-              <span class="portfolio-tag">REST API</span>
-              <span class="portfolio-tag">Full Stack</span>
-            </div>
-          </div>
+        <!-- Thumbnail strip -->
+        <div class="carousel-thumbs" id="carousel-thumbs">
+          <button class="carousel-thumb active" data-slide="0">
+            <img src="screenshots/rest-demo.png" alt="The Ember Room" />
+            <span>The Ember Room</span>
+          </button>
+          <button class="carousel-thumb" data-slide="1">
+            <img src="screenshots/boutique-demo.png" alt="Magnolia & Co" />
+            <span>Magnolia & Co.</span>
+          </button>
+          <button class="carousel-thumb" data-slide="2">
+            <img src="screenshots/BC-sweets.png" alt="BC's Sweets" />
+            <span>BC's Sweets</span>
+          </button>
+          <button class="carousel-thumb" data-slide="3">
+            <img src="screenshots/portfolio-2026-02-2.png" alt="Portfolio" />
+            <span>Dev Portfolio</span>
+          </button>
         </div>
       </div>
+      <!-- /carousel-wrap -->
     </section>
 
     <!-- ── TESTIMONIALS ── -->

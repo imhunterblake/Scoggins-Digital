@@ -675,6 +675,12 @@ section {
 /* ============================================================
    PORTFOLIO
    ============================================================ */
+/* ============================================================
+   PORTFOLIO CAROUSEL
+   Add this to the bottom of styles.css, replacing the old
+   portfolio section CSS block
+   ============================================================ */
+
 #portfolio {
   background: var(--bg2);
 }
@@ -688,135 +694,354 @@ section {
   gap: 2rem;
 }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+/* ── CAROUSEL WRAPPER ── */
+.carousel-wrap {
+  position: relative;
 }
 
-.portfolio-card {
+/* ── STAGE (overflow hidden clip) ── */
+.carousel-stage {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* ── INDIVIDUAL SLIDE ── */
+.carousel-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 0 0 0.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── IMAGE SIDE ── */
+.carousel-img {
+  position: relative;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
+  aspect-ratio: 16 / 10;
   background: var(--surface);
-  transition: all 0.3s ease;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
-.portfolio-card:hover {
+.carousel-img:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 212, 255, 0.2);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
 }
 
-.portfolio-card.featured {
-  grid-column: span 2;
-}
-
-.portfolio-preview {
-  height: 200px;
-  position: relative;
-  overflow: hidden;
-}
-
-.portfolio-card.featured .portfolio-preview {
-  height: 280px;
-}
-
-.preview-bg {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  font-size: 3rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.preview-bg img {
+.carousel-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
+  transition: transform 0.6s ease;
 }
 
-.preview-bg-1 {
-  background: linear-gradient(135deg, #0a1628 0%, #0d2040 50%, #0a1628 100%);
-}
-.preview-bg-2 {
-  background: linear-gradient(135deg, #0d1f0f 0%, #0f2e14 50%, #071209 100%);
-}
-.preview-bg-3 {
-  background: linear-gradient(135deg, #1a0a28 0%, #2a0d40 50%, #1a0a28 100%);
+.carousel-img:hover img {
+  transform: scale(1.03);
 }
 
-.preview-overlay {
+.carousel-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--surface) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(8, 12, 16, 0.8) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.portfolio-card:hover .preview-overlay {
+.carousel-img:hover .carousel-img-overlay {
   opacity: 1;
 }
 
-.preview-link {
+.carousel-live-btn {
   background: var(--accent);
   color: var(--bg);
-  padding: 0.6rem 1.5rem;
-  border-radius: 6px;
+  font-size: 0.75rem;
   font-weight: 600;
-  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
   text-decoration: none;
-  transform: translateY(10px);
-  transition: transform 0.3s;
+  transform: translateY(6px);
+  transition:
+    transform 0.3s,
+    background 0.2s;
 }
 
-.portfolio-card:hover .preview-link {
+.carousel-img:hover .carousel-live-btn {
   transform: translateY(0);
 }
 
-.portfolio-info {
-  padding: 1.5rem;
+.carousel-live-btn:hover {
+  background: var(--white);
 }
 
-.portfolio-info h3 {
+.carousel-type-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(8, 12, 16, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+/* ── INFO SIDE ── */
+.carousel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.carousel-number {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.4rem;
-}
-
-.portfolio-info p {
-  font-size: 0.85rem;
-  color: var(--text2);
-  line-height: 1.5;
-  font-weight: 300;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  opacity: 0.6;
   margin-bottom: 1rem;
 }
 
-.portfolio-tags {
+.carousel-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.carousel-desc {
+  font-size: 0.92rem;
+  color: var(--text2);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  margin-bottom: 2rem;
 }
 
-.portfolio-tag {
-  background: var(--bg);
+.carousel-tag {
+  background: var(--surface2);
   border: 1px solid var(--border);
   color: var(--text3);
   font-size: 0.7rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.7rem;
   border-radius: 100px;
   font-weight: 500;
   letter-spacing: 0.04em;
+}
+
+.carousel-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ── NAVIGATION ── */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  background: var(--surface2);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.25s;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+/* ── THUMBNAIL STRIP ── */
+.carousel-thumbs {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.carousel-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+  width: 120px;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.carousel-thumb img {
+  width: 100%;
+  height: 68px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.carousel-thumb span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text2);
+  padding: 0 0.5rem 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  letter-spacing: 0.02em;
+}
+
+.carousel-thumb:hover {
+  border-color: rgba(0, 212, 255, 0.2);
+  opacity: 0.8;
+}
+
+.carousel-thumb:hover img {
+  transform: scale(1.05);
+}
+
+.carousel-thumb.active {
+  border-color: var(--accent);
+  opacity: 1;
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.2),
+    0 4px 20px rgba(0, 212, 255, 0.1);
+}
+
+.carousel-thumb.active span {
+  color: var(--accent);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .portfolio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+  }
+
+  .portfolio-header .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .carousel-slide {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .carousel-img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .carousel-title {
+    font-size: 1.6rem;
+  }
+
+  .carousel-desc {
+    font-size: 0.875rem;
+  }
+
+  .carousel-thumbs {
+    display: none;
+  }
+
+  .carousel-actions .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .carousel-nav {
+    margin-top: 2rem;
+  }
 }
 
 /* ============================================================
