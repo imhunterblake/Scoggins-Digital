@@ -155,6 +155,7 @@ section {
   color: var(--white);
   line-height: 1.1;
   margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .section-sub {
@@ -404,7 +405,12 @@ section {
 
 .about-visual {
   position: relative;
-  padding-bottom: 2rem;
+}
+
+.about-card .about-highlights {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
 }
 
 .about-card {
@@ -1852,7 +1858,7 @@ footer {
 @media (max-width: 768px) {
   .nav-client-login {
     border: none !important;
-    padding: 0 !important;
+    padding: 1rem 0 !important;
     background: transparent !important;
     font-size: 1rem !important;
     color: var(--text2) !important;
