@@ -2240,3 +2240,27 @@ footer {
     font-size: 1.25rem;
   }
 }
+
+/* ── TABLET / IPAD PORTRAIT ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  nav {
+    padding: 0 4%;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+
+  .nav-client-login {
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .nav-cta {
+    padding: 0.4rem 0.9rem !important;
+  }
+}
